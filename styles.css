@@ -1,0 +1,255 @@
+:root {
+    --main-color: white;
+    --sub-color: #141414;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: var(--main-color);
+    color: var(--sub-color);
+}
+
+.ribbon {
+    background-color: rgba(132, 101, 58, 50%);
+    padding-left:5px;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    backdrop-filter: blur(20px);
+    padding-top: 100px;
+}
+
+.ribbon__title {
+    color: var(--main-color);
+    font-family:'Pacifico', cursive;
+    font-size: 1.5rem;
+    font-weight: normal;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin: auto;
+}
+
+.carousel-wrap {
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    gap: 30px;
+    animation: slide 10s infinite alternate ease-in-out;
+}
+
+@keyframes slide {
+    0% { /* Sharp change from 100% */
+        transform: translateX(0px);
+    }
+
+    10% {
+        transform: translateX(0px);
+    }
+
+    /* We have the same value in 0% and 10% because we need a pause between 0 and 10%  */
+
+    20% {
+        transform: translateX(calc(-75vw - 52.5px));
+    }
+
+    /*
+        75vw = 300vw / 5 changes (20%, 40%, 60%, 80%, 100%)
+
+        There are seven 30px gaps (for flex between the 8 images)
+        -52.5px: 30px X 7 gaps = 210px
+        210px / 5 changes = 52.5px
+
+        We use negative 75vw and 52.5px because the animation is sliding in the negative direction along the X axis
+    */
+
+    30% {
+        transform: translateX(calc(-75vw - 52.5px));
+    }
+
+    40% {
+        transform: translateX(calc(-150vw - 105px)); /* -150vw = -75vw - 75vw and -105px = -52.5 - 52.5px */
+    }
+
+    50% {
+        transform: translateX(calc(-150vw - 105px));
+    }
+
+    60% {
+        transform: translateX(calc(-225vw - 157.5px)); /* -225vw = -150vw - 75vw and -157.5px = -105 - 52.5px */
+    }
+
+    70% {
+        transform: translateX(calc(-225vw - 157.5px));
+    }
+
+    80% {
+        transform: translateX(calc(-300vw - 210px));
+    }
+
+    100% {
+        transform: translateX(calc(-300vw - 210px));
+    }
+}
+
+.carousel__item {
+    list-style-type: none;
+}
+
+.carousel__image {
+    width: 50vw;
+    height: 33vw;
+    border-radius: 20px;
+    object-fit: cover;  
+}
+
+.sub-heading {
+    font-family:'Noto Sans', sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    font-weight:light;
+}
+
+.cake {
+    max-width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 25%);
+    transition: .3s;
+    padding-bottom: 10px;
+    height: 100%;
+}
+
+.cake:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 25%);
+}
+
+.cake-image {
+    width: 100%;
+    object-fit: cover;
+    height: 250px;
+}
+
+.cake-name {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.25rem;
+    text-align: center;
+    padding-bottom: 0;
+    margin: 0;
+    padding-top:10px;
+}
+
+.cake-short-text {
+   text-align: left;
+   padding-left:20px;
+   padding-right: 20px;
+   padding-bottom: 15px;
+   font-size: .8rem;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--sub-color);
+}
+
+.cake-history {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 850px;
+    justify-content: space-between;
+    margin: auto;
+    align-content: stretch;
+    gap: 50px;
+    padding-bottom: 100px;
+    padding-top:50px; 
+}
+
+.courtesy {
+    background-color: #342423;
+}
+
+.message {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 0px;
+    font-size:0.8rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-color: #141414;
+        --sub-color: #e5e5e5;
+    }
+
+    .cake {
+        box-shadow: none;
+        background-color: rgba(255, 255, 255, 5%);
+    }
+
+    .cake:hover {
+        box-shadow: none;
+    }    
+
+    .message {
+        color: var(--sub-color);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .cake-history {
+        justify-content:center;
+        max-width:550px;
+    }
+    .courtesy {
+        padding:5px;
+    }
+}
+
+@media screen and (max-width:710px) {
+    .sub-heading {
+        padding-top: 20px;
+    }
+
+    .cake-history {
+        justify-content: center;
+        max-width: 250px;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .ribbon {
+        width: 100vw;
+        height: auto;
+        padding-top: 0px;
+        padding-bottom: 5px;
+        padding-left:0px;
+        position: static;
+    }
+
+    .ribbon__title {
+        color: var(--main-color);
+        font-family:'Pacifico', cursive; 
+        font-weight: normal;
+        writing-mode: horizontal-tb;
+        text-align:center;
+    }
+    
+}
+
+@media screen and (max-width:447px) {
+    .sub-heading {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width:348px) {
+    .sub-heading {
+        font-size: 1rem;
+    }
+}
